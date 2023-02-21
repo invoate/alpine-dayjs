@@ -238,12 +238,24 @@ var options = {
   dayjs: import_dayjs.default,
   defaultFormat: "DD/MM/YYYY"
 };
-var dayjsDirective = (el, { expression }) => {
-  const date = expression ? options.dayjs(expression) : options.dayjs();
+var updateElement = function(el, date) {
   const format = el.getAttribute("x-dayjs-format") || options.defaultFormat;
   const formattedDate = date.format(format);
   el.setAttribute("datetime", date.toISOString());
   el.textContent = formattedDate;
+};
+var dayjsDirective = (el, { modifiers, expression }, { evaluateLater, effect }) => {
+  const isBound = modifiers.includes("bind");
+  if (isBound) {
+    let getUpdatedValue = evaluateLater(expression);
+    effect(() => {
+      getUpdatedValue((value) => {
+        updateElement(el, options.dayjs(value));
+      });
+    });
+  } else {
+    updateElement(el, options.dayjs(expression));
+  }
 };
 var dayjsPlugin = function(supplied = {}) {
   options = { ...options, ...supplied };
