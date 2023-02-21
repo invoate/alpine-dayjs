@@ -1,0 +1,19 @@
+{
+  "name": "alpine-dayjs",
+  "version": "1.0.0",
+  "description": "An AlpineJS wrapper for DayJS",
+  "main": "./dist/alpine-dayjs.cjs.js",
+  "module": "./dist/alpine-dayjs.esm.js",
+  "unpkg": "./dist/alpine-dayjs.min.js",
+  "scripts": {
+    "build": "node ./scripts/build.js"
+  },
+  "author": "Oliver Lumby",
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.15"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.7"
+  }
+}
