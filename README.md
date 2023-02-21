@@ -21,6 +21,10 @@ import alpineDayJS from "alpine-dayjs"
 Alpine.plugin(alpineDayJS({
     // options
 }))
+
+//
+
+Alpine.start()
 ```
 
 The package comes with sensible defaults however you may wish to configure them.
