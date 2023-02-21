@@ -6,7 +6,7 @@ This is a simple plugin for [AlpineJS](https://alpinejs.dev) that wraps the popu
 
 This package requires AlpineJS to already be installed, you can install this package via npm:
 
-```bash
+```shell
 npm install @invoate/alpine-daysjs
 ```
 
