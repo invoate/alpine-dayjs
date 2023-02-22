@@ -4,10 +4,19 @@ This is a simple plugin for [AlpineJS](https://alpinejs.dev) that wraps the popu
 
 ## Installation
 
-This package requires AlpineJS to already be installed, you can install this package via npm:
+You can install this package via NPM:
 
-```bash
+```shell
 npm install @invoate/alpine-daysjs
+```
+
+or by CDN:
+
+```html
+<!-- Plugin -->
+<script src="https://unpkg.com/@invoate/alpine-dayjs/dist/alpine-dayjs.min.js" defer></script>
+<!-- AlpineJS -->
+<script src="https://unpkg.com/alpinejs/dist/cdn.min.js" defer></script>
 ```
 
 ### Setup
@@ -18,22 +27,10 @@ First you must register the plugin with Alpine.
 import Alpine from "alpinejs"
 import alpineDayJS from "alpine-dayjs"
 
-Alpine.plugin(alpineDayJS({
-    // options
-}))
-
-//
+Alpine.plugin(alpineDayJS({}))
 
 Alpine.start()
 ```
-
-The package comes with sensible defaults however you may wish to configure them.
-
-| Argument      | Description                                              | Default    |
-|---------------|----------------------------------------------------------|------------|
-| dayjs         | Pass your own instance of DayJS                          | na         |
-| defaultFormat | The default format dates should be formatted as, default | DD/MM/YYYY |
-
 ### Usage
 
 In your views, you can now use the x-dayjs directive.
@@ -47,6 +44,38 @@ In your views, you can now use the x-dayjs directive.
 
 <!-- Displays the current date using the format YYYY-MM-DD -->
 <time x-data x-dayjs x-dayjs-format="YYYY-MM-DD"></time>
+
+<!-- Use a AlpineJS property with the .bind modifier -->
+<div x-data="{ date: '2000-01-01' }">
+    <time x-dayjs.bind="date"></time>
+</div>
+```
+
+### Options
+
+The package comes with sensible defaults however you may wish to configure them.
+
+| Argument      | Description                                              | Default    |
+|---------------|----------------------------------------------------------|------------|
+| dayjs         | Pass your own instance of DayJS                          | na         |
+| defaultFormat | The default format dates should be formatted as, default | DD/MM/YYYY |
+
+```js
+import dayjs from "dayjs"
+import localeEs from "dayjs/locale/es"
+import localizedFormat from "dayjs/plugin/localizedFormat"
+import Alpine from "alpinejs"
+import alpineDayJS from "alpine-dayjs"
+
+dayjs.extend(localizedFormat)
+dayjs.locale(localeEs)
+
+Alpine.plugin(alpineDayJS({
+    dayjs: dayjs // A custom DayJS instance with the LocalizedFormat plugin and Spanish Locale
+    defaultFormat: 'LLL' // LocalizedFormat and Spanish Locale = D [de] MMMM [de] YYYY H:mm
+}))
+
+Alpine.start()
 ```
 
 ## Credits

@@ -5,13 +5,26 @@ var options = {
   defaultFormat: 'DD/MM/YYYY'
 }
 
-const dayjsDirective = (el, { expression }) => {
-  const date = expression ? options.dayjs(expression) : options.dayjs();
+const updateElement = function (el, date) {
   const format = el.getAttribute('x-dayjs-format') || options.defaultFormat;
   const formattedDate = date.format(format);
   el.setAttribute('datetime', date.toISOString());
   el.textContent = formattedDate;
-};
+}
+
+const dayjsDirective = (el, { modifiers, expression }, { evaluateLater, effect }) => {
+  const isBound = modifiers.includes('bind')
+  if (isBound) {
+      let getUpdatedValue = evaluateLater(expression)
+      effect(() => {
+        getUpdatedValue(value => {
+          updateElement(el, options.dayjs(value))
+        })
+      })
+  } else {
+    updateElement(el, options.dayjs(expression))
+  }
+}
 
 const dayjsPlugin = function (supplied = {}) {
   options = { ...options, ...supplied }
