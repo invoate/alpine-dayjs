@@ -1,6 +1,6 @@
 {
   "name": "@invoate/alpine-dayjs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An AlpineJS wrapper for DayJS",
   "main": "./dist/alpine-dayjs.cjs.js",
   "module": "./dist/alpine-dayjs.esm.js",
