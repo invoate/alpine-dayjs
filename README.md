@@ -25,7 +25,7 @@ First you must register the plugin with Alpine.
 
 ```js
 import Alpine from "alpinejs"
-import alpineDayJS from "alpine-dayjs"
+import alpineDayJS from "@invoate/alpine-dayjs"
 
 Alpine.plugin(alpineDayJS({}))
 
@@ -65,7 +65,7 @@ import dayjs from "dayjs"
 import localeEs from "dayjs/locale/es"
 import localizedFormat from "dayjs/plugin/localizedFormat"
 import Alpine from "alpinejs"
-import alpineDayJS from "alpine-dayjs"
+import alpineDayJS from "@invoate/alpine-dayjs"
 
 dayjs.extend(localizedFormat)
 dayjs.locale(localeEs)
