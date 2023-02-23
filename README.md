@@ -7,7 +7,7 @@ This is a simple plugin for [AlpineJS](https://alpinejs.dev) that wraps the popu
 You can install this package via NPM:
 
 ```shell
-npm install @invoate/alpine-daysjs
+npm install @invoate/alpine-dayjs
 ```
 
 or by CDN:
