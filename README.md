@@ -1,5 +1,8 @@
 # An AlpineJS Wrapper for DayJS
 
+[![Latest Version on NPM](https://img.shields.io/npm/v/@invoate/alpine-dayjs?style=flat-square)](https://www.npmjs.com/package/@invoate/alpine-dayjs)
+[![Total Downloads](https://img.shields.io/npm/dt/@invoate/alpine-dayjs?style=flat-square)](https://www.npmjs.com/package/@invoate/alpine-dayjs)
+
 This is a simple plugin for [AlpineJS](https://alpinejs.dev) that wraps the popular JavaScript date library [DayJS](https://day.js.org).
 
 ## Installation
